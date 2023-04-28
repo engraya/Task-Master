@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+  <style>
+    .gradient-custom-2 {
+        /* fallback for old browsers */
+        background: #26dae7;
+      
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(
+          to right,
+          rgb(108, 104, 122),
+          rgb(206, 223, 166)
+        );
+      
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(
+          to right,
+          rgb(52, 180, 231),
+          rgb(251, 249, 252)
+        );
+      }
+      
+      .mask-custom {
+        background: rgba(24, 24, 16, 0.2);
+        border-radius: 2em;
+        backdrop-filter: blur(25px);
+        border: 2px solid rgba(255, 255, 255, 0.05);
+        background-clip: padding-box;
+        box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+      }
+</style>
+</head>
+<body>
+    <section class="vh-100 gradient-custom-2">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-12 col-xl-10">
+                  <div class="container">
+                    <a style="display: contents;" href="{% url 'createSchedule' %}"><button type="submit" class="btn btn-success ">Add Task</button></a>
+                  </div>
+              <div class="card mask-custom">
+                <div class="card-body p-4 text-white">
+      
+                  <div class="text-center pt-3 pb-2">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
+                      alt="Check" width="60">
+                    <h2 class="my-4">Task List</h2>
+                  </div>
+      
+                  <table class="table text-white mb-0">
+                    <thead>
+                      <tr>
+                        <th scope="col">Task ID</th>
+                        <th scope="col">Task Title</th>
+                        <th scope="col">Date Created</th>
+                        <th scope="col">Last Modified</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for object in schedule %}
+                      <tr class="fw-normal">
+                        <th>
+                          <span class="ms-2">{{object.id}}</span>
+                        </th>
+                        <td class="align-middle">
+                          <a style="color: azure;" href="{% url 'detailSchedule' object.id %}"><span>{{ object.title }}</span></a>
+                        </td>
+                        <td class="align-middle">
+                            <span>{{ object.date_created}}</span>
+                          </td>
+                        <td class="align-middle">
+                        <span>{{ object.date_modified}}</span>
+                        </td>
+                        <td class="align-middle">
+                          <h6 class="mb-0"><span class="badge bg-danger">{{object.category}}</span></h6>
+                        </td>
+                        <td class="align-middle">
+                            <a href="{% url 'updateSchedule' object.id %}"><button class="btn btn-outline-success">Update</button></a>
+                            <a href="{% url 'deleteSchedule' object.id %}"><button class="btn btn-outline-danger">Delete</button></a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+      
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
+</html>
+
+

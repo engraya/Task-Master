@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+  <style>
+    .divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+  </style>
+</head>
+<body>
+    <section class="vh-100" style="background-color: #3da2c3;">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-8 col-xl-6">
+              <div class="card rounded-3">
+                <div class="card-body p-4">
+      
+                  <p class="mb-2"><span class="h2 me-2">Task Details</span> <span
+                      class="badge bg-danger"></span></p>
+
+                  <p class="mb-2"><span class="h6 me-2"></span> <span
+                    class="badge bg-danger">Title</span></p>
+                <p class="text-muted pb-2">{{ schedule.title }}</p>
+      
+                  <ul class="list-group rounded-0">
+                    <li class="list-group-item border-0 d-flex align-items-center ps-0">
+                      
+                        {{ schedule.description }}
+                    </li>
+                    <li class="list-group-item border-0 d-flex align-items-center ps-0">
+                    
+                        {{ schedule.date_created }}
+                    </li>
+                    <li class="list-group-item border-0 d-flex align-items-center ps-0">
+                   
+                        {{ schedule.date_modified }}
+                    </li>
+                    <li class="list-group-item border-0 d-flex align-items-center ps-0">
+                
+                        {{ schedule.category }}
+                    </li>
+                  </ul>
+      
+
+
+                     
+                  <div class="divider d-flex align-items-center my-4">
+                    <a href="{% url 'listSchedule' %}"><button class="btn btn-outline-success">Back</button></a>
+                  </div>
+    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
+</html>
